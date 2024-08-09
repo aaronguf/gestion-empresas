@@ -1,11 +1,11 @@
 import express, { json } from 'express' // require -> commonJS
-import { moviesRouter } from './routes/movies.js'
+import { companiesRouter } from './routes/companies.js'
 
 const app = express()
 app.use(json())
 app.disable('x-powered-by')
 
-app.use('/movies', moviesRouter)
+app.use('/empresas', companiesRouter)
 
 const PORT = process.env.PORT ?? 1234
 

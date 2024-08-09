@@ -1,36 +1,28 @@
-### Recuperar todas las películas
-GET http://localhost:1234/movies
+### Recuperar todas las compañias
+GET http://localhost:1234/empresas
 
-### Recuperar una película por id
-GET http://localhost:1234/movies/105cdcda-560f-11ef-93be-803f5df2f1e3
+### Recuperar una compañia por id
+GET http://localhost:1234/empresas/82f9d608-5682-11ef-93be-803f5df2f1e3
 
-### Recuperar todas las películas por un género
-GET http://localhost:1234/movies?genre=ACTION
-
-### Crear una película con POST
-POST http://localhost:1234/movies
+### Crear una compañia con POST
+POST http://localhost:1234/empresas
 Content-Type: application/json
 
 {
-  "sql": "SELECT * FROM users",
-  "title": "The Godfather",
-  "year": 1975,
-  "director": "Francis Ford Coppola",
-  "duration": 175,
-  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
-  "genre": [
-    "Crime",
-    "Drama"
-  ]
+  "company_name": "Flex",
+  "constitution_date": "2024-08-07",
+  "company_type": "Usuario final",
+  "company_comments": "Otra muy buena compañía dentro del mercado de manufactura",
+  "company_fav": false
 }
 
-### Borrar una película
-DELETE http://localhost:1234/movies/c3e23b3f-55fe-11ef-93be-803f5df2f1e3
+### Borrar una compañia
+DELETE http://localhost:1234/empresas/2d943e26-5695-11ef-93be-803f5df2f1e3
 
-### Actualizar una película
-PATCH http://localhost:1234/movies/677d5db2-55be-11ef-93be-803f5df2f1e3
+### Actualizar una compañia
+PATCH http://localhost:1234/empresas/46d94c4f-568c-11ef-93be-803f5df2f1e3
 Content-Type: application/json
 
 {
-  "year": 2022
+  "constitution_date": "2024-01-07"
 }
