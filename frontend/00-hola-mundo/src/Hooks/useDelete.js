@@ -4,7 +4,7 @@ export function useDelete(endpoint) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  async function deleteData() {
+  async function deleteData(endpoint) {
     setLoading(true);
     setError(null); // Resetear error antes de realizar la solicitud
     try {
@@ -22,5 +22,6 @@ export function useDelete(endpoint) {
     }
   }
 
-  return { deleteData, error, loading };
+  return { deleteData: () => deleteData(endpoint), error, loading }; // Asegúrate de que el endpoint se pase aquí
 }
+

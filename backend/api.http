@@ -9,7 +9,7 @@ POST http://localhost:1234/empresas
 Content-Type: application/json
 
 {
-  "company_name": "Flex",
+  "company_name": "Nueva",
   "constitution_date": "2024-08-07",
   "company_type": "Usuario final",
   "company_comments": "Otra muy buena compañía dentro del mercado de manufactura",

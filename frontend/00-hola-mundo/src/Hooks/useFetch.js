@@ -12,6 +12,7 @@ export function useFetch(endpoint) {
         if (!response.ok) {
           throw new Error('Error en la solicitud');
         }
+        console.log(data)
         const result = await response.json();
         setData(result);
       } catch (err) {
