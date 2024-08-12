@@ -97,7 +97,7 @@ export function NewCompanyModal({ onAddCompany }) {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Agregar Nueva Empresa</ModalHeader>
+          <ModalHeader>Alta de empresa</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>

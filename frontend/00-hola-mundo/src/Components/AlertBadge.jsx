@@ -4,7 +4,7 @@ export function AlertBadge() {
   return (  
     <Text fontSize='xl' fontWeight='bold'>
     <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-      Por favor, agrega una nueva empresa para comenzar
+      Sin empresas creadas...
     </Badge>
   </Text>
   )
