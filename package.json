@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start:backend": "cd C:/Users/aaron/Desktop/COMPUSOLUCIONES-Challenge/gestion-empresas/backend && node --watch app.js",
+    "start:frontend": "cd C:/Users/aaron/Desktop/COMPUSOLUCIONES-Challenge/gestion-empresas/frontend/00-hola-mundo && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
