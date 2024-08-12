@@ -1,0 +1,27 @@
+{
+  "name": "gestion-empresas",
+  "version": "1.0.0",
+  "description": "Esta es una aplicación sencilla que muestra los datos de una lista de empresas que el usuario puede modificar usando metodo CRUD",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:backend": "cd C:/Users/aaron/Desktop/COMPUSOLUCIONES-Challenge/gestion-empresas/backend && node --watch app.js",
+    "start:frontend": "cd C:/Users/aaron/Desktop/COMPUSOLUCIONES-Challenge/gestion-empresas/frontend/00-hola-mundo && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.19.2",
+    "mysql2": "^3.11.0",
+    "zod": "3.23.8"
+  }
+}
