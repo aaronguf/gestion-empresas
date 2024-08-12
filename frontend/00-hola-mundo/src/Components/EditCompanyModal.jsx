@@ -53,18 +53,21 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
       })
       return
     }
+      let formattedCompanyFav
 
-      let formattedCompanyFAv = companyFav === 0 ? false : companyFav
-      formattedCompanyFAv = companyFav === 1 ?  true: companyFav
+      if (companyFav === 0) {
+        formattedCompanyFav = false
+      } else {
+        formattedCompanyFav = true
+      }
 
     const updatedCompany = {
       company_name: companyName,
       constitution_date: constitutionDate,
       company_type: companyType,
-      company_fav: formattedCompanyFAv,
+      company_fav: formattedCompanyFav,
       company_comments: comments,
     };
-    console.log(updatedCompany)
     Object.keys(updatedCompany).forEach(key => {
       if (updatedCompany[key] === undefined) {
         delete updatedCompany[key];
