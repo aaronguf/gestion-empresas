@@ -81,7 +81,7 @@ export function MainTable() {
               <Tr key={empresa.company_id}>
                 <Td>{empresa.company_name}</Td>
                 <Td>{empresa.company_type}</Td>
-                <Td>{formatDate(empresa.constitution_date)}</Td>
+                <Td>{formatDate(empresa.constitution_date)}</Td>  {/*Apoyo con Ia para formatear la fecha */}
                 <Td>
                   <FontAwesomeIcon
                     icon={empresa.company_fav ? faHeartSolid : faHeartCrack}

@@ -1,47 +1,40 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, FormControl, FormLabel, Input, Textarea, Checkbox, Select, useToast, Spinner} from '@chakra-ui/react';
+import { Modal, Text, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, FormControl, FormLabel, Input, Textarea, Checkbox, Select, useToast, Spinner} from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useEdit } from '../Hooks/useEdit';
 import { useFetchById } from '../Hooks/useFetchById';
 
-export function EditCompanyModal({ id }) {
+export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edicion de empresa
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
-  // Estados para los datos de la compañía
   const [companyName, setCompanyName] = useState('');
   const [constitutionDate, setConstitutionDate] = useState('');
   const [companyType, setCompanyType] = useState('');
   const [comments, setComments] = useState('');
   const [companyFav, setCompanyFav] = useState(false);
 
-  // Lógica para cargar los datos de la compañía
   const { data: company, loading, error } = useFetchById(`/empresas/${id}`);
 
   const loadCompanyData = () => {
   if (company) {
     setCompanyName(company.company_name);
 
-    // Verificar si la fecha es válida antes de intentar formatearla
     if (company.constitution_date) {
       const formattedDate = new Date(company.constitution_date).toISOString().split('T')[0];
       setConstitutionDate(formattedDate);
     } else {
-      setConstitutionDate(''); // O un valor por defecto si la fecha no es válida
+      setConstitutionDate(''); 
     }
 
     setCompanyType(company.company_type);
     setComments(company.company_comments);
     setCompanyFav(company.company_fav);
-    console.log(company.company_comments)
   }
 };
 
   useEffect(() => {
     if (isOpen) {
-      loadCompanyData();
-      console.log(constitutionDate)
-
-      
+      loadCompanyData();    
     }
   }, [isOpen, company]);
 
@@ -49,6 +42,17 @@ export function EditCompanyModal({ id }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!companyName.trim() || !constitutionDate.trim() || !companyType.trim()) {
+      toast({
+        title: 'Error al modificar la empresa.',
+        description: 'Por favor, no dejes ningun campo obligatorio vacío.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true
+      })
+      return
+    }
 
       let formattedCompanyFAv = companyFav === 0 ? false : companyFav
       formattedCompanyFAv = companyFav === 1 ?  true: companyFav
@@ -112,7 +116,9 @@ export function EditCompanyModal({ id }) {
             ) : (
               <>
                 <FormControl>
-                  <FormLabel>Nombre</FormLabel>
+                  <FormLabel>
+                  <Text as="span" color="red">* </Text> 
+                    Nombre</FormLabel>
                   <Input
                     placeholder="Nombre de la empresa"
                     value={companyName}
@@ -121,7 +127,9 @@ export function EditCompanyModal({ id }) {
                 </FormControl>
 
                 <FormControl mt={4}>
-                  <FormLabel>Fecha de constitución</FormLabel>
+                  <FormLabel>
+                  <Text as="span" color="red">* </Text> 
+                    Fecha de constitución</FormLabel>
                   <Input
                     type="date"
                     value={constitutionDate}
@@ -130,7 +138,9 @@ export function EditCompanyModal({ id }) {
                 </FormControl>
 
                 <FormControl mt={4}>
-                  <FormLabel>Tipo de empresa</FormLabel>
+                  <FormLabel>
+                  <Text as="span" color="red">* </Text> 
+                    Tipo de empresa</FormLabel>
                   <Select
                     placeholder="Selecciona el tipo de empresa"
                     value={companyType}
@@ -160,8 +170,9 @@ export function EditCompanyModal({ id }) {
                 </FormControl>
               </>
             )}
+            <Text as="span" color="red">(*) Campos obligatorios</Text>
           </ModalBody>
-
+          
           <ModalFooter>
             <Button
               colorScheme="blue"
