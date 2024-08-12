@@ -88,7 +88,7 @@ export function MainTable() {
                     style={{ color: empresa.company_fav ? 'red' : 'gray' }}
                   />{' '}
                 </Td>
-                <Td display="flex" justifyContent="space-between" mb={4}>
+                <Td width={"70%"} display="flex" justifyContent="space-between">
                   <EditCompanyModal id={empresa.company_id} />
                   <DeleteButton id={empresa.company_id} />
                 </Td>
