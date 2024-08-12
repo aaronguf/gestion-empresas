@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-export function useCreate(endpoint, method) {
+export function useEdit(endpoint, method = 'PATCH') { 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const postData = async (data) => {
+  const editData = async (data) => {
     setLoading(true);
     setError(null);
     
@@ -26,11 +26,11 @@ export function useCreate(endpoint, method) {
 
     } catch (err) {
       setError(err);
-      throw err; 
+      throw err;
     } finally {
       setLoading(false);
     }
   };
 
-  return { postData, error, loading };
+  return { editData, error, loading };
 }

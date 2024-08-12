@@ -13,7 +13,7 @@ const connection = await mysql.createConnection(config)
 export class CompanyModel {
   static async getAll () {
     const [companies] = await connection.query(
-      'SELECT company_name, constitution_date, company_type, company_comments, company_fav, BIN_TO_UUID(company_id) FROM company ORDER BY company_name ASC;'
+      'SELECT company_name, constitution_date, company_type, company_comments, company_fav, BIN_TO_UUID(company_id) company_id FROM companiesdb.company ORDER BY company_name ASC;'
     )
     return companies
   }

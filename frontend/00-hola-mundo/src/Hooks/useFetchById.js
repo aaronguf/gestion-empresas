@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 
-export function useFetch(endpoint) {
+export function useFetchById(endpoint) {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
- 
+
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await fetch(`http://localhost:1234${endpoint}`);
         if (!response.ok) {
-          throw new Error('Error en la solicitud');
+          throw new Error(`Error: ${response.statusText}`);
         }
         const result = await response.json();
         setData(result);
@@ -19,10 +21,10 @@ export function useFetch(endpoint) {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchData();
-  }, []);
+  }, [endpoint]);
 
-  return { data, error, loading };
+  return { data, loading, error };
 }

@@ -1,6 +1,8 @@
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, FormControl, FormLabel, Input, Textarea, Checkbox, Select, useToast} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useCreate } from '../Hooks/useCreate.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export function NewCompanyModal({ onAddCompany }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -47,7 +49,7 @@ export function NewCompanyModal({ onAddCompany }) {
 
   return (
     <>
-      <Button colorScheme='blue' onClick={onOpen}>Agregar Empresa</Button>
+      <Button style={{ marginRight: '8px' }} colorScheme='blue' onClick={onOpen}><FontAwesomeIcon icon={faPlus}/><p>Agregar Empresa</p> </Button>
 
       <Modal
         initialFocusRef={React.useRef(null)}

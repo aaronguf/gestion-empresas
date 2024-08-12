@@ -2,7 +2,7 @@
 GET http://localhost:1234/empresas
 
 ### Recuperar una compañia por id
-GET http://localhost:1234/empresas/82f9d608-5682-11ef-93be-803f5df2f1e3
+GET http://localhost:1234/empresas/7a1cc21d-57a1-11ef-93be-803f5df2f1e3
 
 ### Crear una compañia con POST
 POST http://localhost:1234/empresas
