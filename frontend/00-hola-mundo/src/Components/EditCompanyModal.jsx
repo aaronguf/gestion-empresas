@@ -29,6 +29,7 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
     setCompanyType(company.company_type);
     setComments(company.company_comments);
     setCompanyFav(company.company_fav);
+    console.log(company)
   }
 };
 
@@ -53,14 +54,17 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
       })
       return
     }
- 
+
+      const formattedCompanyFav = companyFav === 1 || companyFav === true ? true : false
+
     const updatedCompany = {
       company_name: companyName,
       constitution_date: constitutionDate,
       company_type: companyType,
-      company_fav: companyFav,
+      company_fav: formattedCompanyFav,
       company_comments: comments,
     };
+
     Object.keys(updatedCompany).forEach(key => {
       if (updatedCompany[key] === undefined) {
         delete updatedCompany[key];
@@ -77,6 +81,7 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
       });
       onClose();
       setTimeout(() => { window.location.reload();  }, 1000)
+      console.log(updatedCompany)
     } catch (err) {
       toast({
         title: 'Error al actualizar empresa.',
@@ -85,6 +90,7 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
         duration: 5000,
         isClosable: true,
       });
+      console.log(updatedCompany)
     }
   };
 

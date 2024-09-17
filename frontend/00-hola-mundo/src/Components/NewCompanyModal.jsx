@@ -55,6 +55,7 @@ export function NewCompanyModal({ onAddCompany }) {
 
     try {
       await postData(newCompany)
+      console.log(newCompany)
       toast({
         // Ayuda de IA para buscar documentacion de chakra y enviar el toast
         title: 'Empresa creada.',
