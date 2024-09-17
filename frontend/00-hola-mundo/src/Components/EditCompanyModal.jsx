@@ -29,7 +29,6 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
     setCompanyType(company.company_type);
     setComments(company.company_comments);
     setCompanyFav(company.company_fav);
-    console.log(company)
   }
 };
 
@@ -54,14 +53,7 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
       })
       return
     }
-      // let formattedCompanyFav
-
-      // if (companyFav === 0) {
-      //   formattedCompanyFav = false
-      // } if (company === 1) {
-      //   formattedCompanyFav = true
-      // }
-
+ 
     const updatedCompany = {
       company_name: companyName,
       constitution_date: constitutionDate,
@@ -85,7 +77,6 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
       });
       onClose();
       setTimeout(() => { window.location.reload();  }, 1000)
-      console.log(updatedCompany)
     } catch (err) {
       toast({
         title: 'Error al actualizar empresa.',
