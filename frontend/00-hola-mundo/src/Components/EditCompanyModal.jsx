@@ -11,7 +11,7 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
   const [constitutionDate, setConstitutionDate] = useState('');
   const [companyType, setCompanyType] = useState('');
   const [comments, setComments] = useState('');
-  const [companyFav, setCompanyFav] = useState(false);
+  const [companyFav, setCompanyFav] = useState();
 
   const { data: company, loading, error } = useFetchById(`/empresas/${id}`);
 
@@ -53,19 +53,12 @@ export function EditCompanyModal({ id }) { //Apoyo con IA para la funcion de edi
       })
       return
     }
-      let formattedCompanyFav
-
-      if (companyFav === 0) {
-        formattedCompanyFav = false
-      } else {
-        formattedCompanyFav = true
-      }
-
+ 
     const updatedCompany = {
       company_name: companyName,
       constitution_date: constitutionDate,
       company_type: companyType,
-      company_fav: formattedCompanyFav,
+      company_fav: companyFav,
       company_comments: comments,
     };
     Object.keys(updatedCompany).forEach(key => {
